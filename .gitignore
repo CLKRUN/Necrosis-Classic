@@ -1,0 +1,18 @@
+# Development files
+.github/
+*.sh
+.vscode/
+.idea/
+
+# Release artifacts
+release/
+*.zip
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Documentation (keep only essential user docs)
+TBC_ANNIVERSARY_UPDATE_SUMMARY.md
+TESTING_TBC_ANNIVERSARY.md
+RELEASE_GUIDE.md
