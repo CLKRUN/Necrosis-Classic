@@ -5,10 +5,10 @@
 ## Notes: Warlock UI & Shard Management
 ## Notes-frFR: Gestion graphique des shards.
 ## Notes-ruRU: Менеджер заклинаний, камней и демонов для чернокнижника.
-## Version: 8.14 tbca
-## Author: kricklen
+## Version: 0.1 TBCA
+## Author: CLKRUN
 ## DefaultState: Enabled
-## X-Website: https://github.com/kricklen/Necrosis-Classic
+## X-Website: https://github.com/CLKRUN/Necrosis-Classic
 ## X-Original-Author: Lomig, Tarcalion, robert388@hotmail.com, urnati
 ## X-Original-Website: http://necrosis.larmes-cenarius.net/  [does not work anymore]
 ## X-Localizations: enUS, enGB, deDE, frFR, koKR, zhCN, zhTW, esES, ruRU
