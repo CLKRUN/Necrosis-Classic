@@ -2700,7 +2700,7 @@ function Necrosis:BagExplore(containerId)
 
 	-- If bags are full (or if we have reached the limit) then display a notification message || S'il y a plus de fragment que d'emplacements dans le sac défini, on affiche un message d'avertissement
 	if NecrosisConfig.SoulshardSort then
-		local CompteMax = GetContainerNumSlots(NecrosisConfig.SoulshardContainer)
+		local CompteMax = NecrosisCompat.GetContainerNumSlots(NecrosisConfig.SoulshardContainer)
 		for i,bag in ipairs(BagHelper:GetPlayerBags()) do
 			if bag.isSoulBag and (not NecrosisConfig.SoulshardContainer == bag.slot) then
 				CompteMax = CompteMax + bag.capacity
@@ -2723,7 +2723,7 @@ function Necrosis:SoulshardSwitch(Type)
 	for container = 0, 4, 1 do
 		if Local.BagIsSoulPouch[container+1] then break end
 		if not (container == NecrosisConfig.SoulshardContainer) then
-			for slot = 1, GetContainerNumSlots(container), 1 do
+			for slot = 1, NecrosisCompat.GetContainerNumSlots(container), 1 do
 				local itemLink = GetContainerItemLink(container, slot)
 				if (itemLink) then
 					local _, itemID = strsplit(":", itemLink)
@@ -2745,7 +2745,7 @@ end
 -- Finds a new bag / slot when moving shards || Pendant le déplacement des fragments, il faut trouver un nouvel emplacement aux objets déplacés :)
 function Necrosis:FindSlot(shardIndex, shardSlot)
 	local full = true
-	for slot=1, GetContainerNumSlots(NecrosisConfig.SoulshardContainer), 1 do
+	for slot=1, NecrosisCompat.GetContainerNumSlots(NecrosisConfig.SoulshardContainer), 1 do
 		self:MoneyToggle()
  		NecrosisTooltip:SetBagItem(NecrosisConfig.SoulshardContainer, slot)
  		local itemInfo = tostring(NecrosisTooltipTextLeft1:GetText())

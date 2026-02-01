@@ -1,11 +1,11 @@
-## Interface: 20504
+## Interface: 20505
 ## Title: Necrosis-Classic
 ## Title-ruRU: Necrosis-Classic (Русский)
 ## Title-frFR: Necrosis-Classic (Français)
 ## Notes: Warlock UI & Shard Management
 ## Notes-frFR: Gestion graphique des shards.
 ## Notes-ruRU: Менеджер заклинаний, камней и демонов для чернокнижника.
-## Version: 8.13 bcc
+## Version: 8.14 tbca
 ## Author: kricklen
 ## DefaultState: Enabled
 ## X-Website: https://github.com/kricklen/Necrosis-Classic
@@ -17,6 +17,8 @@
 ## SavedVariablesPerCharacter: NecrosisConfig
 
 Necrosis.xml
+
+Compatibility.lua
 
 libs\LibStub\LibStub.lua
 libs\AceLocale-3.0\AceLocale-3.0.xml

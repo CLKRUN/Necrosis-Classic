@@ -31,7 +31,7 @@ Necrosis = {
 }
 
 Necrosis.Data = {
-	Version = GetAddOnMetadata("Necrosis-Classic", "Version"),
+	Version = NecrosisCompat.GetAddOnMetadata("Necrosis-Classic", "Version"),
 	AppName = "Necrosis Classic",
 	LastConfig = 20191125
 }

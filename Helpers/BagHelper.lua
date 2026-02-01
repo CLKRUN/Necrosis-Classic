@@ -32,7 +32,7 @@ function _bh:GetPlayerBags()
     for i = 0, NUM_BAG_SLOTS, 1 do
 		local bagName = GetBagName(i)
 		if (bagName) then
-			local bagSlots = GetContainerNumSlots(i)
+			local bagSlots = NecrosisCompat.GetContainerNumSlots(i)
 			local itemType, itemSubType, _, _, _, _, classID, subclassID = select(6, GetItemInfo(bagName))
 			table.insert(
 				bagsArray,
