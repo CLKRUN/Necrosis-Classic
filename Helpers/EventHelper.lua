@@ -6,7 +6,6 @@ EventHelper = {
         "CHAT_MSG_ADDON",
         "COMBAT_LOG_EVENT_UNFILTERED",
         "GROUP_ROSTER_UPDATE",
-        "LEARNED_SPELL_IN_TAB",
         "PLAYER_ALIVE",
         "PLAYER_DEAD",
         "PLAYER_REGEN_DISABLED",

@@ -79,6 +79,15 @@ if C_Container then
         return C_Container.GetContainerItemLink(bagID, slot)
     end
     
+    compat.GetContainerItemID = function(bagID, slot)
+        if C_Container.GetContainerItemID then
+            return C_Container.GetContainerItemID(bagID, slot)
+        else
+            local itemInfo = C_Container.GetContainerItemInfo(bagID, slot)
+            return itemInfo and itemInfo.itemID
+        end
+    end
+    
     compat.GetContainerItemCooldown = function(bagID, slot)
         return C_Container.GetContainerItemCooldown(bagID, slot)
     end
@@ -95,6 +104,7 @@ else
     compat.GetContainerNumSlots = GetContainerNumSlots
     compat.GetContainerItemInfo = GetContainerItemInfo
     compat.GetContainerItemLink = GetContainerItemLink
+    compat.GetContainerItemID = GetContainerItemID
     compat.GetContainerItemCooldown = GetContainerItemCooldown
     compat.PickupContainerItem = PickupContainerItem
     compat.UseContainerItem = UseContainerItem
@@ -145,6 +155,20 @@ if not GetItemInfo then
     end
 else
     compat.GetItemInfo = GetItemInfo
+end
+
+-- GetItemCooldown compatibility
+if C_Item and C_Item.GetItemCooldown then
+    compat.GetItemCooldown = function(itemID)
+        return C_Item.GetItemCooldown(itemID)
+    end
+elseif GetItemCooldown then
+    compat.GetItemCooldown = GetItemCooldown
+else
+    -- Fallback for very old clients
+    compat.GetItemCooldown = function(itemID)
+        return 0, 0, 1
+    end
 end
 
 ------------------------------------------------------------------------------------------------------

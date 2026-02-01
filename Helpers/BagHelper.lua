@@ -95,7 +95,7 @@ function _bh:_FindStones(bag)
 	if (not bag.isSoulBag) then
 		-- Iterate over the bag slots
 		for slot = 1,bag.capacity,1 do
-			local itemId = GetContainerItemID(bag.id, slot)
+			local itemId = NecrosisCompat.GetContainerItemID(bag.id, slot)
 			-- If there is an item located in that bag slot || Dans le cas d'un emplacement non vide
 			if (itemId) then
 				-- Check if its a soulstone and of higher rank than the current one
@@ -170,7 +170,7 @@ function _bh:DestroyShards(maxToKeep)
 end
 
 function _bh:TryDestroyShard(bagId, slot)
-	local itemId = GetContainerItemID(bagId, slot)
+	local itemId = NecrosisCompat.GetContainerItemID(bagId, slot)
 	if (itemId == ItemHelper.Soulshard_Item_Id) then
 		PickupContainerItem(bagId, slot)
 		if (CursorHasItem()) then

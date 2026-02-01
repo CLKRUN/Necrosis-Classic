@@ -73,8 +73,9 @@ function _t:GetFormattedTime(secs)
 	return string.format("%d", secs)
 end
 
-function _t:SetFont(path, size)
-	local result = _t.Font:SetFont(path, size)
+function _t:SetFont(path, size, flags)
+	flags = flags or ""
+	local result = _t.Font:SetFont(path, size, flags)
 end
 
 local function FindMobTimerGroup(targetGuid)

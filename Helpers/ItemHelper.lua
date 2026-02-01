@@ -158,7 +158,7 @@ function _ih:GetItemCooldownTime(itemId)
 end
 
 function _ih:GetItemCooldownInSecs(itemId)
-	local startTime, duration, enable = GetItemCooldown(itemId)
+	local startTime, duration, enable = NecrosisCompat.GetItemCooldown(itemId)
 	if enable == 0 then
 		return 0
 	end
