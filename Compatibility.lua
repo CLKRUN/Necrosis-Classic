@@ -48,6 +48,22 @@ if C_Container then
         return C_Container.GetContainerNumSlots(bagID)
     end
     
+    compat.GetBagName = function(bagID)
+        if C_Container.GetBagName then
+            return C_Container.GetBagName(bagID)
+        else
+            -- Fallback: get bag item link and extract name
+            local inventoryID = ContainerIDToInventoryID(bagID)
+            if inventoryID then
+                local itemLink = GetInventoryItemLink("player", inventoryID)
+                if itemLink then
+                    return GetItemInfo(itemLink)
+                end
+            end
+            return nil
+        end
+    end
+    
     compat.GetContainerItemInfo = function(bagID, slot)
         local info = C_Container.GetContainerItemInfo(bagID, slot)
         if info then
@@ -82,6 +98,18 @@ else
     compat.GetContainerItemCooldown = GetContainerItemCooldown
     compat.PickupContainerItem = PickupContainerItem
     compat.UseContainerItem = UseContainerItem
+    
+    -- GetBagName doesn't exist in TBC Anniversary - need to construct it
+    compat.GetBagName = function(bagID)
+        local inventoryID = ContainerIDToInventoryID(bagID)
+        if inventoryID then
+            local itemLink = GetInventoryItemLink("player", inventoryID)
+            if itemLink then
+                return GetItemInfo(itemLink)
+            end
+        end
+        return nil
+    end
 end
 
 ------------------------------------------------------------------------------------------------------

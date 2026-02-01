@@ -30,7 +30,7 @@ local _bh = BagHelper
 function _bh:GetPlayerBags()
     local bagsArray = {}
     for i = 0, NUM_BAG_SLOTS, 1 do
-		local bagName = GetBagName(i)
+		local bagName = NecrosisCompat.GetBagName(i)
 		if (bagName) then
 			local bagSlots = NecrosisCompat.GetContainerNumSlots(i)
 			local itemType, itemSubType, _, _, _, _, classID, subclassID = select(6, GetItemInfo(bagName))
