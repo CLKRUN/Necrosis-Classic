@@ -56,7 +56,7 @@ function _bh:GetStoneCounts()
 	self.DemonicFigure_Count = GetItemCount(ItemHelper.DemonicFigure_Item_Id)
 end
 
--- Explore bags for stones & shards || Fonction qui fait l'inventaire des éléments utilisés en démonologie : Pierres, Fragments, Composants d'invocation
+-- Explore bags for stones & shards - Function that inventories items used in demonology: Stones, Shards, Summoning components
 function _bh:BagExplore(bagId)
 	-- Only check inventory bags or -2 (same bag)
 	if (bagId
@@ -105,10 +105,7 @@ function _bh:_FindStones(bag)
 					self.Soulstone_IsAvailable = true
 					self.Soulstone_Rank = ItemHelper.Soulstone[itemId].Rank
 					self.Soulstone_Name = ItemHelper.Soulstone[itemId].Name
-					-- Update its button attributes on the sphere || On attache des actions au bouton de la pierre
-					SphereButtonHelper:SoulstoneUpdateAttribute()
-
-				-- Check if its a healthstone and of higher rank than the current one
+				-- Update its button attributes on the sphere
 				elseif (ItemHelper:IsHealthstone(itemId)
 					and self.Healthstone_Rank <= ItemHelper.Healthstone[itemId].Rank
 					and self.Healthstone_ItemId < itemId) -- Check if there is a 0, 1 or 2x improved healthstone
@@ -119,30 +116,18 @@ function _bh:_FindStones(bag)
 					self.Healthstone_BagId = bag.id
 					self.Healthstone_SlotId = slot
 					self.Healthstone_Name = ItemHelper.Healthstone[itemId].Name
-					-- Update its button attributes on the sphere || On attache des actions au bouton de la pierre
-					SphereButtonHelper:HealthstoneUpdateAttribute()
-
-				-- Check if its a spellstone and of higher rank than the current one
-				elseif (ItemHelper:IsSpellstone(itemId)
-					and self.Spellstone_Rank < ItemHelper.Spellstone[itemId].Rank)
-				then
+				-- Update its button attributes on the sphere
 					self.Spellstone_IsAvailable = true
 					self.Spellstone_Rank = ItemHelper.Spellstone[itemId].Rank
 					self.Spellstone_Name = ItemHelper.Spellstone[itemId].Name
-					-- Update its button attributes on the sphere || On attache des actions au bouton de la pierre
-					SphereButtonHelper:SpellstoneUpdateAttribute()
-
-				-- Check if its a firestone and of higher rank than the current one
+				-- Update its button attributes on the sphere
 				elseif (ItemHelper:IsFirestone(itemId)
 					and self.Firestone_Rank < ItemHelper.Firestone[itemId].Rank)
 				then
 					self.Firestone_IsAvailable = true
 					self.Firestone_Rank = ItemHelper.Firestone[itemId].Rank
 					self.Firestone_Name = ItemHelper.Firestone[itemId].Name
-					-- Update its button attributes on the sphere || On attache des actions au bouton de la pierre
-					SphereButtonHelper:FirestoneUpdateAttribute()
-
-				-- Check if its a hearthstone || et enfin la pierre de foyer
+				-- Update its button attributes on the sphere
 				elseif (ItemHelper:IsHearthstone(itemId)) then
 					self.Hearthstone_IsAvailable = true
 				end

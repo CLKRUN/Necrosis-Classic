@@ -3,97 +3,97 @@
 		-- Sphere --
 	</Binding>
 	<Binding name="CLICK NecrosisMountButton:LeftButton">
-		-- Monture 1--
+		-- Mount 1 --
 	</Binding>
 	<Binding name="CLICK NecrosisMountButton:RightButton">
-		-- Monture 2--
+		-- Mount 2 --
 	</Binding>
 	<Binding name="CLICK NecrosisFirestoneButton:RightButton">
-		-- Créer Pierre de feu --
+		-- Create Firestone --
 	</Binding>
 	<Binding name="CLICK NecrosisFirestoneButton:LeftButton">
-		-- Utiliser Pierre de feu --
+		-- Use Firestone --
 	</Binding>
 	<Binding name="CLICK NecrosisSpellstoneButton:RightButton">
-		-- Créer Pierre de sort --
+		-- Create Spellstone --
 	</Binding>
 	<Binding name="CLICK NecrosisSpellstoneButton:LeftButton">
-		-- Utiliser Pierre de sort --
+		-- Use Spellstone --
 	</Binding>
 	<Binding name="CLICK NecrosisHealthstoneButton:RightButton">
-		-- Créer Pierre de soins --
+		-- Create Healthstone --
 	</Binding>
 	<Binding name="CLICK NecrosisHealthstoneButton:LeftButton">
-		-- Utiliser Pierre de soins --
+		-- Use Healthstone --
 	</Binding>
 	<Binding name="CLICK NecrosisHealthstoneButton:MiddleButton">
-		-- Echanger Pierre de soins --
+		-- Trade Healthstone --
 	</Binding>
 	<Binding name="CLICK NecrosisSoulstoneButton:RightButton">
-		-- Créer Pierre de résurrection --
+		-- Create Soulstone --
 	</Binding>
 	<Binding name="CLICK NecrosisSoulstoneButton:LeftButton">
-		-- Utiliser Pierre de résurrection --
+		-- Use Soulstone --
 	</Binding>
 	
-	<Binding name="CLICK NecrosisBuffMenuButton:LeftButton" header="NecrosisSpell">
-		-- Menu des sorts --
+	<Binding name="CLICK NecrosisBuffMenuButton:LeftButton">
+		-- Spell Menu --
 	</Binding>
 	<Binding name="CLICK NecrosisBuffMenu1:LeftButton">
-		-- Demon Armor || Armure démoniaque --
+		-- Demon Armor --
 	</Binding>
 	<Binding name="CLICK NecrosisBuffMenu2:LeftButton">
-		-- Fel Armor || Gangrarmure --
+		-- Fel Armor --
 	</Binding>
 	<Binding name="CLICK NecrosisBuffMenu3:LeftButton">
-		-- Unending Breath || Respiration interminable --
+		-- Unending Breath --
 	</Binding>
 	<Binding name="CLICK NecrosisBuffMenu4:LeftButton">
-		-- Detect Invisibility || Invisibilité --
+		-- Detect Invisibility --
 	</Binding>
 	<Binding name="CLICK NecrosisBuffMenu5:LeftButton">
 		-- Eye of Kilrogg --
 	</Binding>
 	<Binding name="CLICK NecrosisBuffMenu6:LeftButton">
-		-- Ritual of Summoning || Rituel d'invocation --
+		-- Ritual of Summoning --
 	</Binding>
 	<Binding name="CLICK NecrosisBuffMenu7:LeftButton">
-		-- Soul Link || Lien Spirituel --
+		-- Soul Link --
 	</Binding>
 	<Binding name="CLICK NecrosisBuffMenu8:LeftButton">
-		-- Shadow Ward || Gardien de l'ombre --
+		-- Shadow Ward --
 	</Binding>
 	<Binding name="CLICK NecrosisBuffMenu9:LeftButton">
-		-- Demonic Empowerment || Renforcement démoniaque --
+		-- Demonic Empowerment --
 	</Binding>
 	<Binding name="CLICK NecrosisBuffMenu10:LeftButton">
-		-- Banish || Bannir --
+		-- Banish --
 	</Binding>
 	<Binding name="CLICK NecrosisBuffMenu10:RightButton">
-		-- Banish rank 1 || Bannir rang 1 --
+		-- Banish Rank 1 --
 	</Binding>
 	
 
-	<Binding name="CLICK NecrosisPetMenuButton:LeftButton" header="NecrosisPet">
-		-- Menu des démons --
+	<Binding name="CLICK NecrosisPetMenuButton:LeftButton">
+		-- Pet Menu --
 	</Binding>
 	<Binding name="CLICK NecrosisPetMenu1:LeftButton">
-		-- Domination corrompue --
+		-- Fel Domination --
 	</Binding>
 	<Binding name="CLICK NecrosisPetMenu2:LeftButton">
 		-- Imp --
 	</Binding>
 	<Binding name="CLICK NecrosisPetMenu3:LeftButton">
-		-- Marcheur --
+		-- Voidwalker --
 	</Binding>
 	<Binding name="CLICK NecrosisPetMenu4:LeftButton">
-		-- Succube --
+		-- Succubus --
 	</Binding>
 	<Binding name="CLICK NecrosisPetMenu5:LeftButton">
 		-- Felhunter --
 	</Binding>
 	<Binding name="CLICK NecrosisPetMenu6:LeftButton">
-		-- Gangregarde --
+		-- Felguard --
 	</Binding>
 	<Binding name="CLICK NecrosisPetMenu7:LeftButton">
 		-- Infernal --
@@ -102,32 +102,32 @@
 		-- Doomguard --
 	</Binding>
 	<Binding name="CLICK NecrosisPetMenu9:LeftButton">
-		-- Asservissement --
+		-- Enslave Demon --
 	</Binding>
 	<Binding name="CLICK NecrosisPetMenu10:LeftButton">
 		-- Sacrifice --
 	</Binding>
 
-	<Binding name="CLICK NecrosisCurseMenuButton:LeftButton" header="NecrosisCurse">
-		-- Menu des malédictions --
+	<Binding name="CLICK NecrosisCurseMenuButton:LeftButton">
+		-- Curse Menu --
 	</Binding>
 	<Binding name="CLICK NecrosisCurseMenu1:LeftButton">
-		-- Faiblesse --
+		-- Curse of Weakness --
 	</Binding>
 	<Binding name="CLICK NecrosisCurseMenu2:LeftButton">
-		-- Agonie --
+		-- Curse of Agony --
 	</Binding>
 	<Binding name="CLICK NecrosisCurseMenu3:LeftButton">
-		-- Témérité --
+		-- Curse of Recklessness --
 	</Binding>
 	<Binding name="CLICK NecrosisCurseMenu4:LeftButton">
-		-- Langage --
+		-- Curse of Tongues --
 	</Binding>
 	<Binding name="CLICK NecrosisCurseMenu5:LeftButton">
-		-- Fatigue --
+		-- Curse of Exhaustion --
 	</Binding>
 	<Binding name="CLICK NecrosisCurseMenu6:LeftButton">
-		-- Elements --
+		-- Curse of Elements --
 	</Binding>
 	<Binding name="CLICK NecrosisCurseMenu7:LeftButton">
 		-- Corruption --

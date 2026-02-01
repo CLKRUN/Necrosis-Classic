@@ -20,28 +20,14 @@
 --]]
 
 
-------------------------------------------------------------------------------------------------------
--- Necrosis LdC
--- Par Lomig (Kael'Thas EU/FR) & Tarcalion (Nagrand US/Oceanic) 
--- Contributions deLiadora et Nyx (Kael'Thas et Elune EU/FR)
---
--- Skins et voix Françaises : Eliah, Ner'zhul
---
--- Version Allemande par Geschan
--- Version Espagnole par DosS (Zul’jin)
--- Version Russe par Komsomolka
---
--- $LastChangedDate: 2010-08-04 12:04:27 +1000 (Wed, 04 Aug 2010) $
-------------------------------------------------------------------------------------------------------
-
--- On définit G comme étant le tableau contenant toutes les frames existantes.
+-- G is defined as the array containing all existing frames.
 local _G = getfenv(0)
 
 local NECROSIS_COMPANIONS_PER_PAGE = 12;
 local NECROSIS_PAGE_NUMBER = "Page %s of %s";
 
 ------------------------------------------------------------------------------------------------------
--- CREATING THE FRAME OF THE OPTIONS || CREATION DE LA FRAME DES OPTIONS
+-- CREATING THE FRAME OF THE OPTIONS
 ------------------------------------------------------------------------------------------------------
 
 Necrosis.Gui.ButtonsView = {

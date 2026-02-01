@@ -129,7 +129,7 @@ function _gh:CreateButton(parentFrame, text, x, y, onClickFunction)
 end
 
 function _gh:CreateButtonPrev(parentFrame, onClickFunction)
-	local btn = CreateFrame("Button", nil, parentFrame, "OptionsButtonTemplate")
+	local btn = CreateFrame("Button", nil, parentFrame)
 	btn:EnableMouse(true)
 	btn:Show()
 	btn:ClearAllPoints()
@@ -144,7 +144,7 @@ function _gh:CreateButtonPrev(parentFrame, onClickFunction)
 end
 
 function _gh:CreateButtonNext(parentFrame, onClickFunction)
-	local btn = CreateFrame("Button", nil, parentFrame, "OptionsButtonTemplate")
+	local btn = CreateFrame("Button", nil, parentFrame)
 	btn:EnableMouse(true)
 	btn:Show()
 	btn:ClearAllPoints()
@@ -162,9 +162,9 @@ function _gh.OnDragStart(uiElement)
 	uiElement:StartMoving()
 end
 
--- Function stopping the movement of Necrosis elements on the screen ||Fonction arrêtant le déplacement d'éléments de Necrosis sur l'écran
+-- Function stopping the movement of Necrosis elements on the screen
 function _gh.OnDragStop(uiElement)
-	-- We stop the movement effectively ||On arrête le déplacement de manière effective
+	-- We stop the movement effectively
 	uiElement:StopMovingOrSizing()
 	-- We save the location of the button ||On sauvegarde l'emplacement du bouton
 	local name = uiElement:GetName()

@@ -113,20 +113,13 @@ local r_click = 2
 function Necrosis:SetBuffSpellAttribute(button)
 	local f = button
 	if f then
-		-- Get both spell ID and name for compatibility
-		local spellId = Necrosis.GetSpellId and Necrosis.GetSpellId(f.high_of) or nil
 		local spellName = Necrosis.GetSpellCastName(f.high_of)
-		
-		-- Prefer spell ID for TBC Anniversary, fallback to name for classic TBC
-		local spellAttr = spellId or spellName
 		
 		if Necrosis.Debug.buttons then
 			_G["DEFAULT_CHAT_FRAME"]:AddMessage("SetBuffSpellAttribute"
 			.." f'"..tostring(button).."'"
 			.." h'"..tostring(f.high_of).."'"
-			.." id'"..tostring(spellId or "nil").."'"
 			.." name'"..tostring(spellName or "nil").."'"
-			.." using'"..tostring(spellAttr or "nil").."'"
 			)
 		end
 		if (f.high_of == "banish") then
@@ -163,9 +156,9 @@ function Necrosis:SetBuffSpellAttribute(button)
 		elseif (f.high_of == "armor") then
 			-- Check if we got Fel Armor, which has different effects
 			f:SetAttribute("type1", "spell")
-			f:SetAttribute("spell1", spellAttr)
+			f:SetAttribute("spell1", spellName)
 			f:SetAttribute("type2", "spell")
-			f:SetAttribute("spell2", spellAttr)
+			f:SetAttribute("spell2", spellName)
 			if (Necrosis.CurrentEnv.DemonArmorAvailable) then
 				f:SetAttribute("spell1", Necrosis.CurrentEnv.DemonArmorName)
 				f:SetAttribute("spell2", Necrosis.CurrentEnv.DemonArmorName)
@@ -175,7 +168,7 @@ function Necrosis:SetBuffSpellAttribute(button)
 			end
 		else
 			f:SetAttribute("type", "spell")
-			f:SetAttribute("spell", spellAttr)
+			f:SetAttribute("spell", spellName)
 		end
 	end
 end
@@ -191,26 +184,21 @@ end
 function Necrosis:SetPetSpellAttribute(button)
 	local f = button
 	if f then
-		-- Get both spell ID and name for compatibility
-		local spellId = Necrosis.GetSpellId and Necrosis.GetSpellId(f.high_of) or nil
 		local spellName = Necrosis.GetSpellCastName(f.high_of)
-		local spellAttr = spellId or spellName
 		
 		if Necrosis.Debug.buttons then
 			_G["DEFAULT_CHAT_FRAME"]:AddMessage("SetPetSpellAttribute"
 			.." f'"..tostring(button).."'"
 			.." h'"..tostring(f.high_of).."'"
 			.." p'"..tostring(f.pet).."'"
-			.." id'"..tostring(spellId or "nil").."'"
 			.." name'"..tostring(spellName or "nil").."'"
 			)
 		end
 
 		if f.pet then
 			f:SetAttribute("type1", "spell")
-			f:SetAttribute("spell", spellAttr) 
-			if Necrosis.IsSpellKnown("domination") then 
-				local dominationId = Necrosis.GetSpellId and Necrosis.GetSpellId("domination") or nil
+			f:SetAttribute("spell", spellName) 
+			if Necrosis.IsSpellKnown("domination") then
 				local dominationName = Necrosis.GetSpellCastName("domination")
 				f:SetAttribute("type2", "macro")
 				local str = 
@@ -221,7 +209,7 @@ function Necrosis:SetPetSpellAttribute(button)
 			end
 		else
 			f:SetAttribute("type", "spell")
-			f:SetAttribute("spell", spellAttr) 
+			f:SetAttribute("spell", spellName) 
 		end
 	end
 end
@@ -236,21 +224,17 @@ end
 function Necrosis:SetCurseSpellAttribute(button)
 	local f = button
 	if f then
-		-- Get both spell ID and name for compatibility
-		local spellId = Necrosis.GetSpellId and Necrosis.GetSpellId(f.high_of) or nil
 		local spellName = Necrosis.GetSpellCastName(f.high_of)
-		local spellAttr = spellId or spellName
 		
 		f:SetAttribute("harmbutton", "debuff")
 		f:SetAttribute("type-debuff", "spell")
 		f:SetAttribute("unit", "target")
-		f:SetAttribute("spell-debuff", spellAttr)
+		f:SetAttribute("spell-debuff", spellName)
 
 		if Necrosis.Debug.buttons then
 			_G["DEFAULT_CHAT_FRAME"]:AddMessage("SetCurseSpellAttribute"
 			.." f'"..tostring(f:GetName()).."'"
 			.." h'"..tostring(f.high_of).."'"
-			.." id'"..tostring(spellId or "nil").."'"
 			.." name'"..tostring(spellName or "nil").."'"
 			)
 		end
@@ -276,28 +260,40 @@ function Necrosis:StoneAttribute(Steed)
 	if Necrosis.IsSpellKnown("firestone") then
 		local f = _G[Necrosis.Warlock_Buttons.fire_stone.f]
 		if f then
-			local spellId = Necrosis.GetSpellId and Necrosis.GetSpellId("firestone") or nil
 			local spellName = Necrosis.GetSpellCastName("firestone")
 			f:SetAttribute("type2", "spell")
-			f:SetAttribute("spell2", spellId or spellName) 
+			f:SetAttribute("spell2", spellName)
 		end
 	end
 	if Necrosis.IsSpellKnown("spellstone") then
 		local f = _G[Necrosis.Warlock_Buttons.spell_stone.f]
 		if f then
-			local spellId = Necrosis.GetSpellId and Necrosis.GetSpellId("spellstone") or nil
 			local spellName = Necrosis.GetSpellCastName("spellstone")
 			f:SetAttribute("type2", "spell")
-			f:SetAttribute("spell2", spellId or spellName) 
+			f:SetAttribute("spell2", spellName)
 		end
 	end
 	if Necrosis.IsSpellKnown("healthstone") then
 		local f = _G[Necrosis.Warlock_Buttons.health_stone.f]
 		if f then
-			local spellId = Necrosis.GetSpellId and Necrosis.GetSpellId("healthstone") or nil
 			local spellName = Necrosis.GetSpellCastName("healthstone")
 			f:SetAttribute("type2", "spell")
-			f:SetAttribute("spell2", spellId or spellName)
+			f:SetAttribute("spell2", spellName)
+			
+			-- Shift+click for Ritual of Summoning and/or Ritual of Souls
+			local ritualMacro = ""
+			if Necrosis.IsSpellKnown("summoning") then
+				local summoningSpell = Necrosis.GetSpellCastName("summoning")
+				ritualMacro = "/cast "..summoningSpell.."\n"
+			end
+			if Necrosis.IsSpellKnown("ritual_souls") then
+				local soulsSpell = Necrosis.GetSpellCastName("ritual_souls")
+				ritualMacro = ritualMacro.."/cast "..soulsSpell
+			end
+			if ritualMacro ~= "" then
+				f:SetAttribute("shift-type1", "macro")
+				f:SetAttribute("shift-macrotext1", ritualMacro)
+			end
 		end
 	end
 
@@ -375,24 +371,16 @@ function Necrosis:MainButtonAttribute()
 		end
 	end
 
-	-- TBC Anniversary may require spell IDs instead of spell names for secure action buttons
-	-- Try to use GlobalId if available, fallback to NameOrg
-	local main_cast_id = Necrosis.Spell[NecrosisConfig.MainSpell].GlobalId
 	local main_cast_name = Necrosis.Spell[NecrosisConfig.MainSpell].NameOrg
 	
 	if Necrosis.Debug.buttons then
 		_G["DEFAULT_CHAT_FRAME"]:AddMessage("MainButtonAttribute"
 		.." idx'"..tostring(NecrosisConfig.MainSpell or "nyl").."'"
-		.." id'"..tostring(main_cast_id or "nyl").."'"
 		.." name'"..tostring(main_cast_name or "nyl").."'"
 		)
 	end
 	
-	-- Prefer spell ID if available (TBC Anniversary requirement)
-	if main_cast_id then 
-		f:SetAttribute("type1", "spell")
-		f:SetAttribute("spell", main_cast_id)
-	elseif main_cast_name and main_cast_name ~= "" then
+	if main_cast_name and main_cast_name ~= "" then
 		f:SetAttribute("type1", "spell")
 		f:SetAttribute("spell", main_cast_name)
 	end

@@ -1,6 +1,6 @@
 -- Class for central event management
 EventHelper = {
-    -- Events utilised by Necrosis || Events utilisés dans Necrosis
+    -- Events utilised by Necrosis
     ApiEvents = {
         "BAG_UPDATE",
         "CHAT_MSG_ADDON",

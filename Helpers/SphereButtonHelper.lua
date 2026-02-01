@@ -64,13 +64,12 @@ function _sbh:FirestoneUpdateAttribute(nostone)
 		)
 	end
 
-	-- Si le démoniste n'a pas de pierre dans son inventaire,
-	-- Un clic gauche crée la pierre
+	-- If the warlock doesn't have a stone in their inventory,
+	-- Left click creates the stone
 	if nostone then
-		local spellId = Necrosis.GetSpellId and Necrosis.GetSpellId("firestone") or nil
 		local spellName = Necrosis.GetSpellCastName("firestone")
-		f:SetAttribute("type1", "spell") -- 54
-		f:SetAttribute("spell*", spellId or spellName) 
+		f:SetAttribute("type1", "spell")
+		f:SetAttribute("spell1", spellName) 
 	else
 		f:SetAttribute("type1", "item")
 		f:SetAttribute("item1", BagHelper.Firestone_Name)
@@ -90,13 +89,12 @@ function _sbh:SpellstoneUpdateAttribute(nostone)
 		)
 	end
 
-	-- Si le démoniste n'a pas de pierre dans son inventaire,
-	-- Un clic gauche crée la pierre
+	-- If the warlock doesn't have a stone in their inventory,
+	-- Left click creates the stone
 	if nostone then
-		local spellId = Necrosis.GetSpellId and Necrosis.GetSpellId("spellstone") or nil
 		local spellName = Necrosis.GetSpellCastName("spellstone")
-		f:SetAttribute("type1", "spell") -- 53
-		f:SetAttribute("spell*", spellId or spellName) 
+		f:SetAttribute("type1", "spell")
+		f:SetAttribute("spell1", spellName) 
 	else
 		f:SetAttribute("type1", "item")
 		f:SetAttribute("item1", BagHelper.Spellstone_Name)
@@ -116,13 +114,12 @@ function _sbh:HealthstoneUpdateAttribute(nostone)
 		)
 	end
 
-	-- Si le démoniste n'a pas de pierre dans son inventaire,
-	-- Un clic gauche crée la pierre
+	-- If the warlock doesn't have a stone in their inventory,
+	-- Left click creates the stone
 	if nostone then
-		local spellId = Necrosis.GetSpellId and Necrosis.GetSpellId("healthstone") or nil
 		local spellName = Necrosis.GetSpellCastName("healthstone")
-		f:SetAttribute("type1", "spell") -- 52
-		f:SetAttribute("spell1", spellId or spellName) 
+		f:SetAttribute("type1", "spell")
+		f:SetAttribute("spell1", spellName) 
 	else
 		-- Use all available healthstones
 		local useHealthstoneMacro = ""
@@ -136,13 +133,28 @@ function _sbh:HealthstoneUpdateAttribute(nostone)
 		f:SetAttribute("ctrl-type1", "Trade")
 		f.Trade = function () Necrosis:TradeStone() end
 	end
+	
+	-- Shift+click for Ritual of Summoning and/or Ritual of Souls
+	local ritualMacro = ""
+	if Necrosis.IsSpellKnown("summoning") then
+		local summoningSpell = Necrosis.GetSpellCastName("summoning")
+		ritualMacro = "/cast "..summoningSpell.."\n"
+	end
+	if Necrosis.IsSpellKnown("ritual_souls") then
+		local soulsSpell = Necrosis.GetSpellCastName("ritual_souls")
+		ritualMacro = ritualMacro.."/cast "..soulsSpell
+	end
+	if ritualMacro ~= "" then
+		f:SetAttribute("shift-type1", "macro")
+		f:SetAttribute("shift-macrotext1", ritualMacro)
+	end
 end
 
 
 ------------------------------------------------------------------------------------------------------
--- MENU BUTTONS || BOUTONS DES MENUS
+-- MENU BUTTONS
 ------------------------------------------------------------------------------------------------------
--- Create a Menu (Open/Close) button || Creaton du bouton d'ouverture du menu
+-- Create a Menu (Open/Close) button
 function _sbh:CreateMenuButton(warlockButton)
 	local frame = CreateFrame("Button", warlockButton.f, UIParent, "SecureHandlerAttributeTemplate,SecureHandlerClickTemplate,SecureHandlerEnterLeaveTemplate")
 
@@ -163,13 +175,13 @@ function _sbh:CreateMenuButton(warlockButton)
 	frame:SetNormalTexture(warlockButton.norm) 
 	frame:SetHighlightTexture(warlockButton.high) 
 	frame:RegisterForDrag("LeftButton")
-	frame:RegisterForClicks("AnyUp")
+	frame:RegisterForClicks("LeftButtonUp", "RightButtonUp")
 	frame:Show()
 
-	-- Edit the scripts associated with the button || Edition des scripts associés au bouton
+	-- Edit the scripts associated with the button
 	frame:SetScript("OnEnter", function(self) Necrosis:BuildButtonTooltip(self) end)
 	frame:SetScript("OnLeave", function() GameTooltip:Hide() end)
-	frame:SetScript("OnMouseUp", function(self) Necrosis:OnDragStop(self) end)
+	-- OnMouseUp removed - it interferes with SecureActionButton spell casting
 	frame:SetScript("OnDragStart", function(self)
 		if not NecrosisConfig.NecrosisLockServ then
 			Necrosis:OnDragStart(self)
@@ -177,7 +189,7 @@ function _sbh:CreateMenuButton(warlockButton)
 	end)
 	frame:SetScript("OnDragStop", function(self) Necrosis:OnDragStop(self) end)
 
-	-- Place the button window at its saved location || Placement de la fenêtre à l'endroit sauvegardé ou à l'emplacement par défaut
+	-- Place the button window at its saved location
 	if not NecrosisConfig.NecrosisLockServ then
 		frame:ClearAllPoints()
 		frame:SetPoint(
@@ -194,13 +206,13 @@ end
 
 
 ------------------------------------------------------------------------------------------------------
--- BUTTONS for stones (health / spell / Fire), and the Mount || BOUTON DES PIERRES, DE LA MONTURE
+-- BUTTONS for stones (health / spell / Fire), and the Mount
 ------------------------------------------------------------------------------------------------------
--- Create the stone button || Création du bouton de la pierre
+-- Create the stone button
 function _sbh:CreateStoneButton(warlockButton)
 	local frame = CreateFrame("Button", warlockButton.f, UIParent, "SecureActionButtonTemplate")
 
-	-- Define its attributes || Définition de ses attributs
+	-- Define its attributes
 	frame:SetMovable(true)
 	frame:EnableMouse(true)
 	frame:SetWidth(34)
@@ -208,15 +220,15 @@ function _sbh:CreateStoneButton(warlockButton)
 	frame:SetNormalTexture(warlockButton.norm) --("Interface\\AddOns\\Necrosis-Classic\\UI\\"..stone.."Button-01")
 	frame:SetHighlightTexture(warlockButton.high) --("Interface\\AddOns\\Necrosis-Classic\\UI\\"..stone.."Button-0"..num)
 	frame:RegisterForDrag("LeftButton")
-	frame:RegisterForClicks("AnyUp")
+	frame:RegisterForClicks("AnyUp", "AnyDown")
 	frame:Show()
 
 
-	-- Edit the scripts associated with the buttons || Edition des scripts associés au bouton
+	-- Edit the scripts associated with the buttons
 	frame:SetScript("OnEnter", function(self) Necrosis:BuildButtonTooltip(self) end)
 --	frame:SetScript("OnEnter", function(self) Necrosis:BuildTooltip(self, stone, "ANCHOR_LEFT") end)
 	frame:SetScript("OnLeave", function() GameTooltip:Hide() end)
-	frame:SetScript("OnMouseUp", function(self) Necrosis:OnDragStop(self) end)
+	-- OnMouseUp removed - it interferes with SecureActionButton spell casting
 	frame:SetScript("OnDragStart", function(self)
 		if not NecrosisConfig.NecrosisLockServ then
 			Necrosis:OnDragStart(self)
@@ -224,8 +236,8 @@ function _sbh:CreateStoneButton(warlockButton)
 	end)
 	frame:SetScript("OnDragStop", function(self) Necrosis:OnDragStop(self) end)
 
-	-- -- Attributes specific to the soulstone button || Attributs spécifiques à la pierre d'âme
-	-- -- if there are no restrictions while in combat, then allow the stone to be cast || Ils permettent de caster la pierre sur soi si pas de cible et hors combat
+	-- -- Attributes specific to the soulstone button
+	-- -- if there are no restrictions while in combat, then allow the stone to be cast
 	-- if warlockButton == Necrosis.Warlock_Buttons.soul_stone.f then
 	-- 	frame:SetScript("PreClick", function(self)
 	-- 		if (not UnitIsFriend("player","target")) then
@@ -238,7 +250,7 @@ function _sbh:CreateStoneButton(warlockButton)
 	-- end
 
 	-- Create a place for text
-	-- Create the soulshard counter || Création du compteur de fragments d'âme
+	-- Create the soulshard counter
 	local FontString = _G[warlockButton.f.."Text"]
 	if not FontString then
 		FontString = frame:CreateFontString(warlockButton.f, nil, "GameFontNormal")
@@ -248,11 +260,11 @@ function _sbh:CreateStoneButton(warlockButton)
 	frame.high_of = warlockButton
 	frame.font_string = FontString
 
-	-- Define its attributes || Définition de ses attributs
+	-- Define its attributes
 	FontString:SetText("") -- blank for now
 	FontString:SetPoint("CENTER")
 
-	-- Place the button window at its saved location || Placement de la fenêtre à l'endroit sauvegardé ou à l'emplacement par défaut
+	-- Place the button window at its saved location
 	if not NecrosisConfig.NecrosisLockServ then
 		frame:ClearAllPoints()
 		frame:SetPoint(

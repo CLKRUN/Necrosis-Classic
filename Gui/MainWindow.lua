@@ -20,24 +20,6 @@
 --]]
 
 
-------------------------------------------------------------------------------------------------------
--- Necrosis LdC
--- Par Lomig (Kael'Thas EU/FR) & Tarcalion (Nagrand US/Oceanic) 
--- Contributions deLiadora et Nyx (Kael'Thas et Elune EU/FR)
---
--- Skins et voix Françaises : Eliah, Ner'zhul
---
--- Version Allemande par Geschan
--- Version Espagnole par DosS (Zul’jin)
--- Version Russe par Komsomolka
---
--- $LastChangedDate: 2008-10-26 20:09:15 +1100 (Sun, 26 Oct 2008) $
-------------------------------------------------------------------------------------------------------
-
-------------------------------------------------------------------------------------------------------
--- CRÉATION ET INVOCATION DU PANNEAU DE CONFIGURATION
-------------------------------------------------------------------------------------------------------
-
 Necrosis.Gui.MainWindow = {
 	CurrentPanelId = 1,
 	Frame = false,
@@ -135,7 +117,7 @@ function _mw:Show()
 		-- Credits
 		self.fsCredits = GraphicsHelper:CreateFontString(
 			self.Frame,
-			"Developed by Lomig & Tarcalion, rewritten by urnati & kricklen",
+			"Developed by Lom Enfroy part of Necrosis LdC",
 			"TOP",
 			0, -44
 		)

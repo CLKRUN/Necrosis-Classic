@@ -31,7 +31,7 @@ function Necrosis:CreateWarlockUI()
 	frame:SetWidth(58)
 	frame:SetHeight(58)
 	frame:RegisterForDrag("LeftButton")
-	frame:RegisterForClicks("AnyUp")
+	frame:RegisterForClicks("AnyUp", "AnyDown")
 	frame:Show()
 
 	-- Place the button window at its saved location || Placement de la fenêtre à l'endroit sauvegardé ou à l'emplacement par défaut
@@ -79,7 +79,7 @@ function Necrosis:CreateMenuItem(warlockButton, high_of)
 		frame:SetWidth(40)
 		frame:SetHeight(40)
 		frame:SetHighlightTexture(warlockButton.high) --("Interface\\AddOns\\Necrosis-Classic\\UI\\"...)
-		frame:RegisterForClicks("LeftButtonUp", "RightButtonUp")
+		frame:RegisterForClicks("AnyUp", "AnyDown")
 
 		-- ======  hidden but effective
 		-- Add valuable data to the frame for retrieval later
@@ -142,13 +142,14 @@ function Necrosis:CreateWarlockPopup()
 	frame:SetHeight(40)
 	frame:SetNormalTexture(GraphicsHelper:GetTexture("ShadowTrance-Icon"))
 	frame:RegisterForDrag("LeftButton")
-	frame:RegisterForClicks("AnyUp")
+	frame:RegisterForClicks("AnyUp", "AnyDown")
 	frame:Hide()
 
 	-- Edit scripts associated with the button || Edition des scripts associés au bouton
 	frame:SetScript("OnEnter", function(self) Necrosis:BuildButtonTooltip(self) end)
 	frame:SetScript("OnLeave", function() GameTooltip:Hide() end)
-	frame:SetScript("OnMouseUp", function(self) Necrosis:OnDragStop(self) end)
+	-- OnMouseUp interferes with SecureActionButton
+	-- frame:SetScript("OnMouseUp", function(self) Necrosis:OnDragStop(self) end)
 	frame:SetScript("OnDragStart", function(self) Necrosis:OnDragStart(self) end)
 	frame:SetScript("OnDragStop", function(self) Necrosis:OnDragStop(self) end)
 
@@ -182,7 +183,8 @@ function Necrosis:CreateWarlockPopup()
 	-- Edit the scripts associated with the button || Edition des scripts associés au bouton
 	frame:SetScript("OnEnter", function(self) Necrosis:BuildButtonTooltip(self) end)
 	frame:SetScript("OnLeave", function() GameTooltip:Hide() end)
-	frame:SetScript("OnMouseUp", function(self) Necrosis:OnDragStop(self) end)
+	-- OnMouseUp interferes with SecureActionButton
+	-- frame:SetScript("OnMouseUp", function(self) Necrosis:OnDragStop(self) end)
 	frame:SetScript("OnDragStart", function(self) Necrosis:OnDragStart(self) end)
 	frame:SetScript("OnDragStop", function(self) Necrosis:OnDragStop(self) end)
 
@@ -215,7 +217,8 @@ function Necrosis:CreateWarlockPopup()
 	frame:Hide()
 
 	-- Edit the scripts associated with the button || Edition des scripts associés au bouton
-	frame:SetScript("OnMouseUp", function(self) Necrosis:OnDragStop(self) end)
+	-- OnMouseUp interferes with SecureActionButton
+	-- frame:SetScript("OnMouseUp", function(self) Necrosis:OnDragStop(self) end)
 	frame:SetScript("OnDragStart", function(self) Necrosis:OnDragStart(self) end)
 	frame:SetScript("OnDragStop", function(self) Necrosis:OnDragStop(self) end)
 
@@ -254,7 +257,8 @@ function Necrosis:CreateWarlockPopup()
 	frame:Hide()
 
 	-- Edit the scripts associated with the button || Edition des scripts associés au bouton
-	frame:SetScript("OnMouseUp", function(self) Necrosis:OnDragStop(self) end)
+	-- OnMouseUp interferes with SecureActionButton
+	-- frame:SetScript("OnMouseUp", function(self) Necrosis:OnDragStop(self) end)
 	frame:SetScript("OnDragStart", function(self) Necrosis:OnDragStart(self) end)
 	frame:SetScript("OnDragStop", function(self) Necrosis:OnDragStop(self) end)
 

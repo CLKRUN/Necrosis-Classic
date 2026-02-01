@@ -33,6 +33,12 @@
 -- Version $LastChangedDate: 2010-08-04 12:04:27 +1000 (Wed, 04 Aug 2010) $
 ------------------------------------------------------------------------------------------------------
 
+-- Ensure Localization namespace exists
+if not Localization then
+    Localization = {}
+    print("Necrosis: WARNING - Localization was nil, recreating")
+end
+
 -- Available languages and translated texts
 Localization.Languages = {
     ["frFR"] = {
@@ -71,3 +77,10 @@ Localization.Languages = {
         ["init"] = Localization.ruRU
     }
 }
+
+-- Debug: Verify the table was created
+if Localization.Languages then
+    print("Necrosis: Localization.Languages created successfully with " .. table.getn(Localization.Languages) .. " entries")
+else
+    print("Necrosis: ERROR - Localization.Languages failed to create!")
+end

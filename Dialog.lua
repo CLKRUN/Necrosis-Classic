@@ -479,20 +479,20 @@ Necrosis.Config.Misc = {
 }
 
 -- From Functions.lua
--- Types d'unité des PnJ utilisés par Necrosis
+-- NPC unit types used by Necrosis
 Necrosis.Unit = {
 	["Undead"] = L["UNDEAD"],
 	["Demon"] = L["DEMON"],
 	["Elemental"] = L["ELEMENTAL"],
 }
 
--- Traduction du nom des procs utilisés par Necrosis
+-- Translation of proc names used by Necrosis
 Necrosis.Translation.Proc = {
 	["Backlash"] = L["BACKLASH"],   -- https://classicdb.ch/?spell=4947 not sure this right one
 	["ShadowTrance"] = L["SHADOW_TRANCE"] -- https://classicdb.ch/?spell=17941 (6) Apply Aura #108: Add % Modifier (10)
 }
 
--- Traduction des noms des démons invocables
+-- Translation of summonable demon names
 Necrosis.Translation.DemonName = {
 	[1] = L["IMP"],
 	[2] = L["VOIDWALKER"],
@@ -503,7 +503,7 @@ Necrosis.Translation.DemonName = {
 	[7] = L["DOOMGUARD"],
 }
 
--- Traduction du nom des objets utilisés par Necrosis
+-- Translation of item names used by Necrosis
 Necrosis.Translation.Item = {
 	["Soulshard"] = L["SOUL_SHARD"], -- https://classicdb.ch/?item=6265
 	["Soulstone"] = L["SOUL_STONE"], -- below
@@ -560,7 +560,7 @@ Necrosis.Translation.Misc = {
 	["Create"] = L["CREATE"],
 }
 
--- Gestion de la détection des cibles protégées contre la peur
+-- Detection management for fear-protected targets
 Necrosis.AntiFear = {
 	-- Buffs giving temporary immunity to fear effects
 	["Buff"] = {

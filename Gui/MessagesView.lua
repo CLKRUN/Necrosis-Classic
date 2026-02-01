@@ -19,21 +19,6 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 --]]
 
-
-------------------------------------------------------------------------------------------------------
--- Necrosis LdC
--- Par Lomig (Kael'Thas EU/FR) & Tarcalion (Nagrand US/Oceanic) 
--- Contributions deLiadora et Nyx (Kael'Thas et Elune EU/FR)
---
--- Skins et voix Françaises : Eliah, Ner'zhul
---
--- Version Allemande par Geschan
--- Version Espagnole par DosS (Zul’jin)
--- Version Russe par Komsomolka
---
--- $LastChangedDate: 2008-10-26 18:56:51 +1100 (Sun, 26 Oct 2008) $
-------------------------------------------------------------------------------------------------------
-
 ------------------------------------------------------------------------------------------------------
 -- CREATING THE OPTIONS FRAME
 ------------------------------------------------------------------------------------------------------
@@ -66,6 +51,11 @@ end
 
 -- Add items to the dropdown
 function _mv._LanguageDropDownInit(dd, level, menulist)
+    if not Localization.Languages then
+        print("Necrosis: Error - Localization.Languages is nil")
+        return
+    end
+    
     for i, v in pairs(Localization.Languages) do
         UIDropDownMenu_AddButton({
             text = v.lang,
@@ -103,9 +93,9 @@ end
 function _mv:cbSpeech_Click()
 	NecrosisConfig.ChatMsg = self:GetChecked()
 	if NecrosisConfig.ChatMsg then
-		self.EnableMessages()
+		_mv:EnableMessages()
 	else
-		self.DisableMessages()
+		_mv:DisableMessages()
 	end
 end
 

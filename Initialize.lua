@@ -24,7 +24,7 @@
 -- Par Lomig (Kael'Thas EU/FR) & Tarcalion (Nagrand US/Oceanic) 
 -- Contributions deLiadora et Nyx (Kael'Thas et Elune EU/FR)
 --
--- Skins et voix Françaises : Eliah, Ner'zhul
+-- French Skins and voices: Eliah, Ner'zhul
 --
 -- Version Allemande par Geschan
 -- Version Espagnole par DosS (Zul’jin)
@@ -36,7 +36,7 @@
 
 
 
--- On définit _G comme étant le tableau contenant toutes les frames existantes.
+-- Define _G as the table containing all existing frames.
 local _G = getfenv(0)
 
 ------------------------------------------------------------------------------------------------------
@@ -90,14 +90,14 @@ local function setupMenu()
 
 	Necrosis:MainButtonAttribute()
 
-	-- On règle la taille de la pierre et des boutons suivant les réglages du SavedVariables
+	-- Set the size of the stone and buttons according to SavedVariables settings
 	NecrosisButton:SetScale(NecrosisConfig.NecrosisButtonScale/100)
 	NecrosisShadowTranceButton:SetScale(NecrosisConfig.ShadowTranceScale/100)
 	NecrosisBacklashButton:SetScale(NecrosisConfig.ShadowTranceScale/100)
 	NecrosisAntiFearButton:SetScale(NecrosisConfig.ShadowTranceScale/100)
 	NecrosisCreatureAlertButton:SetScale(NecrosisConfig.ShadowTranceScale/100)
 
-	-- Le Shard est-il verrouillé sur l'interface ?
+	-- Is the Shard locked on the interface?
 	if NecrosisConfig.NoDragAll then
 		SphereMenu:NoDrag()
 		NecrosisButton:RegisterForDrag("")
@@ -106,14 +106,14 @@ local function setupMenu()
 		NecrosisButton:RegisterForDrag("LeftButton")
 	end
 
-	-- Inventaire des pierres et des fragments possedés par le Démoniste
+	-- Inventory of stones and shards possessed by the Warlock
 	Necrosis:BagExplore()
 
 	-- Si la sphere doit indiquer la vie ou la mana, on y va
 	Necrosis:UpdateHealth()
 	Necrosis:UpdateMana()
 
-	-- On vérifie que les fragments sont dans le sac défini par le Démoniste
+	-- We verify that the shards are in the bag defined by the Warlock
 	if NecrosisConfig.SoulshardSort then
 		Necrosis:SoulshardSwitch("CHECK")
 	end
@@ -123,7 +123,7 @@ function Necrosis:Initialize(Config)
 	CheckGroupStatus()
 	ApplyLocalization()
 
-	-- On charge (ou on crée la configuration pour le joueur et on l'affiche sur la console
+	-- Load (or create) the configuration for the player and display it on the console
 	if not NecrosisConfig.Version or type(NecrosisConfig.Version) == "string" or Necrosis.Data.LastConfig > NecrosisConfig.Version then
 		NecrosisConfig = {}
 		NecrosisConfig = Config
@@ -156,12 +156,12 @@ function Necrosis:Initialize(Config)
 
 	self:CreateWarlockPopup()
 	-----------------------------------------------------------
-	-- Exécution des fonctions de démarrage
+	-- Execution of startup functions
 	-----------------------------------------------------------
 	-- Affichage d'un message sur la console
 	self.Chat:_Msg(self.ChatMessage.Interface.Welcome, "USER")
 
-	-- Création de la liste des sorts disponibles
+	-- Creation of the list of available spells
 	self:SpellLocalize()
 	setupMenu()
 	
