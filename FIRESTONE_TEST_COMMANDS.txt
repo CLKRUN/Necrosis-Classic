@@ -1,0 +1,36 @@
+# Copy and paste these commands in-game to test Create Firestone spell ID handling
+# For LEVEL 60 CHARACTER - Firestone Rank 4 (ID 17953)
+
+# 1. Check if you know firestone
+/run print("Firestone known:", Necrosis.IsSpellKnown("firestone"))
+
+# 2. Check what Necrosis has stored for firestone
+/run if Necrosis.Warlock_Spell_Use["firestone"] then print("Name:", Necrosis.Warlock_Spell_Use["firestone"].Name, "GlobalId:", Necrosis.Warlock_Spell_Use["firestone"].GlobalId, "Rank:", Necrosis.Warlock_Spell_Use["firestone"].Rank) else print("NOT FOUND") end
+
+# 3. Check GetSpellId function (should return 17953 for level 60)
+/run print("GetSpellId('firestone'):", Necrosis.GetSpellId("firestone"))
+
+# 4. Check firestone button attributes
+/run local f = _G["NecrosisFirestoneButton"]; if f then print("Type:", f:GetAttribute("type1"), "Spell:", f:GetAttribute("spell1") or f:GetAttribute("spell*")) else print("Button not found") end
+
+# 5. Check initial spell table entry (index 54) - should be 17953 after our fix
+/run print("Spell[54] GlobalId:", Necrosis.Spell[54].GlobalId, "Name:", Necrosis.Spell[54].Name, "Rank:", Necrosis.Spell[54].Rank)
+
+# 6. Test if spell ID 17953 is valid (Create Firestone Rank 4)
+/run local name = GetSpellInfo(17953); print("Spell 17953 name:", name or "NOT FOUND")
+
+# 7. Check if we can cast using spell ID directly
+/run print("Attempting to cast spell ID 17953..."); CastSpell(17953)
+
+# 8. Enable debug and force button attribute update
+/run Necrosis.Debug.buttons = true; SphereButtonHelper:FirestoneUpdateAttribute(false)
+
+# 9. Check all stone spells in Warlock_Spell_Use (Level 60 expected IDs)
+# Firestone R4: 17953, Spellstone R3: 17728, Healthstone R4: 11729, Soulstone R6: 27239
+/run for _, stone in ipairs({"firestone", "spellstone", "healthstone", "soulstone"}) do local s = Necrosis.Warlock_Spell_Use[stone]; if s then print(stone..":", "ID="..tostring(s.GlobalId), "Rank="..tostring(s.Rank)) else print(stone..": NOT FOUND") end end
+
+# 10. Verify spell scanning worked
+/run print("Total spells in Necrosis.Spell:", #Necrosis.Spell)
+
+# 11. Test if spell name from ID 17953 matches what's in your spellbook
+/run local name = GetSpellInfo(17953); print("ID 17953 =", name); for i=1,100 do local n = GetSpellBookItemName(i, BOOKTYPE_SPELL); if n and n == name then print("Found in spellbook at slot", i) break end end

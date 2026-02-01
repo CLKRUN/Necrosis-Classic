@@ -67,8 +67,10 @@ function _sbh:FirestoneUpdateAttribute(nostone)
 	-- Si le démoniste n'a pas de pierre dans son inventaire,
 	-- Un clic gauche crée la pierre
 	if nostone then
+		local spellId = Necrosis.GetSpellId and Necrosis.GetSpellId("firestone") or nil
+		local spellName = Necrosis.GetSpellCastName("firestone")
 		f:SetAttribute("type1", "spell") -- 54
-		f:SetAttribute("spell*", Necrosis.GetSpellCastName("firestone")) 
+		f:SetAttribute("spell*", spellId or spellName) 
 	else
 		f:SetAttribute("type1", "item")
 		f:SetAttribute("item1", BagHelper.Firestone_Name)
@@ -91,8 +93,10 @@ function _sbh:SpellstoneUpdateAttribute(nostone)
 	-- Si le démoniste n'a pas de pierre dans son inventaire,
 	-- Un clic gauche crée la pierre
 	if nostone then
+		local spellId = Necrosis.GetSpellId and Necrosis.GetSpellId("spellstone") or nil
+		local spellName = Necrosis.GetSpellCastName("spellstone")
 		f:SetAttribute("type1", "spell") -- 53
-		f:SetAttribute("spell*", Necrosis.GetSpellCastName("spellstone")) 
+		f:SetAttribute("spell*", spellId or spellName) 
 	else
 		f:SetAttribute("type1", "item")
 		f:SetAttribute("item1", BagHelper.Spellstone_Name)
@@ -115,8 +119,10 @@ function _sbh:HealthstoneUpdateAttribute(nostone)
 	-- Si le démoniste n'a pas de pierre dans son inventaire,
 	-- Un clic gauche crée la pierre
 	if nostone then
+		local spellId = Necrosis.GetSpellId and Necrosis.GetSpellId("healthstone") or nil
+		local spellName = Necrosis.GetSpellCastName("healthstone")
 		f:SetAttribute("type1", "spell") -- 52
-		f:SetAttribute("spell1", Necrosis.GetSpellCastName("healthstone")) 
+		f:SetAttribute("spell1", spellId or spellName) 
 	else
 		-- Use all available healthstones
 		local useHealthstoneMacro = ""

@@ -144,6 +144,101 @@ compat.IsSpellKnown = IsSpellKnown or function(spellID)
     return false
 end
 
+-- GetSpellBookItemName compatibility
+-- In TBC Anniversary, this should work, but let's ensure it does
+-- Returns: spellName, spellSubName, spellID
+if C_SpellBook and C_SpellBook.GetSpellBookItemName then
+    compat.GetSpellBookItemName = function(spellId, bookType)
+        -- Modern API: C_SpellBook.GetSpellBookItemName returns name, subName
+        -- But we also need the spell ID (third return value in classic)
+        local name, subName = C_SpellBook.GetSpellBookItemName(spellId, bookType)
+        if name then
+            -- Try to get spell ID from C_SpellBook.GetSpellBookItemInfo
+            if C_SpellBook.GetSpellBookItemInfo then
+                local info = C_SpellBook.GetSpellBookItemInfo(spellId, bookType)
+                if info and info.spellID then
+                    return name, subName, info.spellID
+                end
+            end
+            -- Fallback: return without spell ID (will break spell casting)
+            return name, subName, nil
+        end
+        return nil
+    end
+elseif GetSpellBookItemName then
+    compat.GetSpellBookItemName = GetSpellBookItemName
+else
+    -- Shouldn't happen in TBC Anniversary
+    compat.GetSpellBookItemName = function(spellId, bookType)
+        return nil
+    end
+end
+
+-- GetSpellInfo compatibility  
+if C_Spell and C_Spell.GetSpellInfo then
+    compat.GetSpellInfo = function(spellId)
+        local spellInfo = C_Spell.GetSpellInfo(spellId)
+        if spellInfo then
+            return spellInfo.name, nil, spellInfo.iconID, spellInfo.castTime, 
+                   spellInfo.minRange, spellInfo.maxRange, spellInfo.spellID, spellInfo.originalIconID
+        else
+            return nil
+        end
+    end
+elseif GetSpellInfo then
+    compat.GetSpellInfo = GetSpellInfo
+else
+    compat.GetSpellInfo = function(spellId)
+        return nil
+    end
+end
+
+------------------------------------------------------------------------------------------------------
+-- SECURE ACTION BUTTON SPELL COMPATIBILITY
+------------------------------------------------------------------------------------------------------
+
+-- Helper to get the correct spell identifier for secure action buttons
+-- Returns spell ID if TBC Anniversary prefers IDs, otherwise returns spell name
+compat.GetSecureSpellIdentifier = function(spellUsage, getNeCrosisFunc)
+    -- Check if we should use spell IDs
+    -- TBC Anniversary (20505) uses a hybrid approach
+    -- Let's detect by checking if the newer APIs exist
+    local useIds = (C_Spell ~= nil)
+    
+    if useIds then
+        -- Try to get spell ID
+        if Necrosis and Necrosis.GetSpellId then
+            local spellId = Necrosis.GetSpellId(spellUsage)
+            if spellId then
+                return spellId
+            end
+        end
+    end
+    
+    -- Fallback to spell name (classic TBC behavior)
+    if getNeCrosisFunc then
+        return getNeCrosisFunc(spellUsage)
+    elseif Necrosis and Necrosis.GetSpellCastName then
+        return Necrosis.GetSpellCastName(spellUsage)
+    end
+    
+    return nil
+end
+
+-- Helper to set spell attribute on secure action buttons
+-- Automatically determines whether to use spell ID or name
+compat.SetSpellAttribute = function(button, attrName, spellIdentifier)
+    if not button or not attrName then
+        return
+    end
+    
+    if spellIdentifier then
+        button:SetAttribute(attrName, spellIdentifier)
+    else
+        button:SetAttribute(attrName, nil)
+    end
+end
+
 ------------------------------------------------------------------------------------------------------
 -- ITEM API COMPATIBILITY
 ------------------------------------------------------------------------------------------------------

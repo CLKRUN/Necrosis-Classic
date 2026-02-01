@@ -215,10 +215,10 @@ function Necrosis:SpellLocalize(tooltip)
 			[48] = {Name = GetSpellInfo(27243),	GlobalId = 27243,	Mana = 50,	Rank = 0,	Duration = 18,	Type = "debuff", Usage = "seed"}, -- NOPE NOT IN Classic, BUT in TBC: Seed of Corruption || Graine de Corruption
 			[49] = {Name = GetSpellInfo(29858),	GlobalId = 29858,	Mana = 50,	Rank = 0,	Duration = 300,	Type = "self",   Usage = "shatter"}, -- NOPE NOT IN Classic, BUT in TBC: SoulShatter || Brise âme
 			[50] = {Name = GetSpellInfo(29893),	GlobalId = 29893,	Mana = 50,	Rank = 0,	Duration = 0,	Type = nil,      Usage = "ritual_souls"}, -- NOPE NOT IN Classic, BUT in TBC: Ritual of Souls || Rituel des âmes
-			[51] = {Name = GetSpellInfo(693),	GlobalId = 693,		Mana = 50,	Rank = 0,	Duration = 0,   Type = nil,      Usage = "soulstone"}, -- Create Soulstone || Création pierre d'âme
-			[52] = {Name = GetSpellInfo(6201),	GlobalId = 6201,	Mana = 50,	Rank = 0,	Duration = 0,	Type = nil,      Usage = "healthstone"}, -- Create Healthstone || Création pierre de soin
-			[53] = {Name = GetSpellInfo(2362),	GlobalId = 2362,	Mana = 50,	Rank = 0,	Duration = 0,	Type = nil,      Usage = "spellstone"}, -- Create Spellstone || Création pierre de sort
-			[54] = {Name = GetSpellInfo(6366),	GlobalId = 6366,	Mana = 50,	Rank = 0,	Duration = 0,	Type = nil,      Usage = "firestone"}, -- Create Firestone || Création pierre de feu
+			[51] = {Name = GetSpellInfo(27239),	GlobalId = 27239,	Mana = 50,	Rank = 0,	Duration = 0,   Type = nil,      Usage = "soulstone"}, -- Create Soulstone (R1=693 @18, R2=20752 @28, R3=20755 @38, R4=20756 @48, R5=20757 @58, R6=27239 @60) || Création pierre d'âme
+			[52] = {Name = GetSpellInfo(11729),	GlobalId = 11729,	Mana = 50,	Rank = 0,	Duration = 0,	Type = nil,      Usage = "healthstone"}, -- Create Healthstone (R1=6201 @10, R2=6202 @22, R3=5699 @34, R4=11729 @46, R5=11730 @58, R6=27230 @60) || Création pierre de soin
+			[53] = {Name = GetSpellInfo(17728),	GlobalId = 17728,	Mana = 50,	Rank = 0,	Duration = 0,	Type = nil,      Usage = "spellstone"}, -- Create Spellstone (R1=2362 @36, R2=17727 @48, R3=17728 @60) || Création pierre de sort
+			[54] = {Name = GetSpellInfo(17953),	GlobalId = 17953,	Mana = 50,	Rank = 0,	Duration = 0,	Type = nil,      Usage = "firestone"}, -- Create Firestone (R1=6366 @28, R2=17951 @36, R3=17952 @46, R4=17953 @56) || Création pierre de feu
 			[55] = {Name = GetSpellInfo(18220),	GlobalId = 18220,	Mana = 50,	Rank = 0,	Duration = 0,	Type = nil,      Usage = "pact"}, -- Dark Pact || Pacte noir
 			[56] = {Name = GetSpellInfo(133),	GlobalId = 133,		Mana = 50,	Rank = 0,	Duration = 30,	Type = nil,      Usage = "#none#"}, -- NOPE NOT IN Classic  Shadow Cleave || Enchainement d'ombre
 			[57] = {Name = GetSpellInfo(133),	GlobalId = 133,		Mana = 50,	Rank = 0,	Duration = 30,	Type = nil,      Usage = "#none#"}, -- NOPE NOT IN Classic  Immolation Aura || Aura d'immolation
@@ -326,7 +326,7 @@ function Necrosis:SpellSetup()
 
 	-- Search for all spells known by the warlock || On va parcourir tous les sorts possedés par le Démoniste
 	while true do
-		local spellName, subSpellName, globalId = GetSpellBookItemName(spellID, BOOKTYPE_SPELL)
+		local spellName, subSpellName, globalId = NecrosisCompat.GetSpellBookItemName(spellID, BOOKTYPE_SPELL)
 
 		if (not spellName) then
 			do break end
@@ -1154,6 +1154,17 @@ function Necrosis.GetSpellCastName(usage)
 		return Necrosis.Warlock_Spell_Use[usage].Name
 	else
 		return ""
+	end
+end
+
+-- Get the spell ID (GlobalId) for use with secure action buttons
+-- TBC Anniversary may require spell IDs instead of spell names
+function Necrosis.GetSpellId(usage)
+	if Necrosis.Warlock_Spell_Use[usage] -- 
+	then
+		return Necrosis.Warlock_Spell_Use[usage].GlobalId
+	else
+		return nil
 	end
 end
 
