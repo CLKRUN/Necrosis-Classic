@@ -19,20 +19,6 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 --]]
 
-------------------------------------------------------------------------------------------------------
--- Necrosis LdC
--- Par Lomig (Kael'Thas EU/FR) & Tarcalion (Nagrand US/Oceanic)
--- Contributions deLiadora et Nyx (Kael'Thas et Elune EU/FR)
---
--- Skins et voix Françaises : Eliah, Ner'zhul
---
--- Version Allemande par Geschan
--- Version Espagnole par DosS (Zul’jin)
--- Version Russe par Komsomolka
---
--- Version $LastChangedDate: 2010-08-04 12:04:27 +1000 (Wed, 04 Aug 2010) $
-------------------------------------------------------------------------------------------------------
-
 -- Local variables || Variables locales
 local L = LibStub("AceLocale-3.0"):GetLocale(NECROSIS_ID, true)
 
@@ -179,14 +165,14 @@ Local.DefaultConfig = {
 	ChatType = true,
 	Language = GetLocale(),
 	ShowCount = true,
-	CountType = 1,
+	CountType = "Soulshards",
 	ShadowTranceScale = 100,
 	NecrosisButtonScale = 90,
 	NecrosisColor = "Rose",
 	Sound = true,
 	SpellTimerPos = 1,
 	SpellTimerJust = "LEFT",
-	Circle = 1,
+	Circle = "Soulshards",
 	TimerType = 1,
 	SensListe = 1,
 	PetName = {},

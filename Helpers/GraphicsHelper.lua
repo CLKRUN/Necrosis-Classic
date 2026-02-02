@@ -117,7 +117,7 @@ function _gh:CreateSlider(parentFrame, name, min, max, step, height, width, x, y
 end
 
 function _gh:CreateButton(parentFrame, text, x, y, onClickFunction)
-	local btn = CreateFrame("Button", nil, parentFrame, "OptionsButtonTemplate")
+	local btn = CreateFrame("Button", nil, parentFrame, "UIPanelButtonTemplate")
 	btn:SetText(text)
 	btn:EnableMouse(true)
 	btn:Show()
