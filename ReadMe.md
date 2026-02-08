@@ -2,6 +2,10 @@
 
 Warlock helper addon for **WoW Classic: Burning Crusade Classic Anniversary**.
 
+**Get it:**
+- **CurseForge (auto install/updates):** https://www.curseforge.com/wow/addons/necrosis-classic-tbc-anniversary
+- **GitHub Releases (auto install/updates):** https://wowup.io/
+
 Necrosis-Classic is a rewrite/modernization of the classic Necrosis-style workflow: a central “sphere” UI with quick access to shards, stones, demons, curses, buffs, and optional timers.
 
 > Not affiliated with Blizzard Entertainment.
@@ -42,7 +46,11 @@ If the addon shows as “out of date” after a patch, try:
 
 ## Installation
 
-### Install from a release (recommended)
+### Install via CurseForge (automatic updates)
+Install from CurseForge (recommended for auto-updates):  
+https://www.curseforge.com/wow/addons/necrosis-classic-tbc-anniversary
+
+### Install from a release (manual)
 1. Download the latest `.zip` from **Releases**.
 2. Extract into your AddOns folder, e.g. one of:
    - `World of Warcraft/_anniversary_/Interface/AddOns/`
