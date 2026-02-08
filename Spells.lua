@@ -215,7 +215,7 @@ function Necrosis:SpellLocalize(tooltip)
 			[48] = {Name = GetSpellInfo(27243),	GlobalId = 27243,	Mana = 50,	Rank = 0,	Duration = 18,	Type = "debuff", Usage = "seed"}, -- NOPE NOT IN Classic, BUT in TBC: Seed of Corruption || Graine de Corruption
 			[49] = {Name = GetSpellInfo(29858),	GlobalId = 29858,	Mana = 50,	Rank = 0,	Duration = 300,	Type = "self",   Usage = "shatter"}, -- NOPE NOT IN Classic, BUT in TBC: SoulShatter || Brise âme
 			[50] = {Name = GetSpellInfo(29893),	GlobalId = 29893,	Mana = 50,	Rank = 0,	Duration = 0,	Type = nil,      Usage = "ritual_souls"}, -- NOPE NOT IN Classic, BUT in TBC: Ritual of Souls || Rituel des âmes
-			[51] = {Name = GetSpellInfo(27239),	GlobalId = 27239,	Mana = 50,	Rank = 0,	Duration = 0,   Type = nil,      Usage = "soulstone"}, -- Create Soulstone (R1=693 @18, R2=20752 @28, R3=20755 @38, R4=20756 @48, R5=20757 @58, R6=27239 @60)
+			[51] = {Name = GetSpellInfo(693),	GlobalId = 693,	Mana = 50,	Rank = 0,	Duration = 0,   Type = nil,      Usage = "soulstone"}, -- Create Soulstone (R1=693 @18, R2=20752 @28, R3=20755 @38, R4=20756 @48, R5=20757 @58, R6=27239 @60)
 			[52] = {Name = GetSpellInfo(11729),	GlobalId = 11729,	Mana = 50,	Rank = 0,	Duration = 0,	Type = nil,      Usage = "healthstone"}, -- Create Healthstone (R1=6201 @10, R2=6202 @22, R3=5699 @34, R4=11729 @46, R5=11730 @58, R6=27230 @60)
 			[53] = {Name = GetSpellInfo(17728),	GlobalId = 17728,	Mana = 50,	Rank = 0,	Duration = 0,	Type = nil,      Usage = "spellstone"}, -- Create Spellstone (R1=2362 @36, R2=17727 @48, R3=17728 @60)
 			[54] = {Name = GetSpellInfo(17953),	GlobalId = 17953,	Mana = 50,	Rank = 0,	Duration = 0,	Type = nil,      Usage = "firestone"}, -- Create Firestone (R1=6366 @28, R2=17951 @36, R3=17952 @46, R4=17953 @56)

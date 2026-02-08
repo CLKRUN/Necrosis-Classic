@@ -3,8 +3,13 @@
     Copyright (C) - copyright file included in this release
 --]]
 
-local L = LibStub("AceLocale-3.0"):NewLocale(NECROSIS_ID,"zhCN")
-if not L then return end
+local LibStub = LibStub or _G.LibStub
+if not LibStub then
+    error("LibStub is not loaded!")
+    return
+end
+
+L = LibStub("AceLocale-3.0"):NewLocale(NECROSIS_ID, "zhCN")
 
 L["NECROSIS"] = "Necrosis";
 L["NECROSIS_ONLY"] = "Necrosis";

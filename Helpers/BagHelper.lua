@@ -157,7 +157,7 @@ end
 function _bh:TryDestroyShard(bagId, slot)
 	local itemId = NecrosisCompat.GetContainerItemID(bagId, slot)
 	if (itemId == ItemHelper.Soulshard_Item_Id) then
-		PickupContainerItem(bagId, slot)
+		NecrosisCompat.PickupContainerItem(bagId, slot)
 		if (CursorHasItem()) then
 			DeleteCursorItem()
 			return true

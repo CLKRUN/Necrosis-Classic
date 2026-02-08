@@ -196,6 +196,7 @@ Local.DefaultConfig = {
 		["NecrosisPetMenuButton"] = {"CENTER", "UIParent", "CENTER", 87,-100},
 		["NecrosisCurseMenuButton"] = {"CENTER", "UIParent", "CENTER", 121,-100},
 		["NecrosisMobTimerAnchor"] = {"CENTER", "UIParent", "CENTER", -200,-100},
+		["NecrosisSingleTimerAnchor"] = {"CENTER", "UIParent", "CENTER", 200,-100},
 	},
 }
 
@@ -2736,8 +2737,8 @@ function Necrosis:FindSlot(shardIndex, shardSlot)
  		NecrosisTooltip:SetBagItem(NecrosisConfig.SoulshardContainer, slot)
  		local itemInfo = tostring(NecrosisTooltipTextLeft1:GetText())
 		if not itemInfo:find(self.Translation.Item.Soulshard) then
-			PickupContainerItem(shardIndex, shardSlot)
-			PickupContainerItem(NecrosisConfig.SoulshardContainer, slot)
+			NecrosisCompat.PickupContainerItem(shardIndex, shardSlot)
+			NecrosisCompat.PickupContainerItem(NecrosisConfig.SoulshardContainer, slot)
 			if (CursorHasItem()) then
 				if shardIndex == 0 then
 					PutItemInBackpack()
@@ -2852,12 +2853,12 @@ function Necrosis:TradeStone()
 	-- If a friendly target is selected then trade the stone || Dans ce cas si un pj allié est sélectionné, on lui donne la pierre
 	-- Else use it || Sinon, on l'utilise
 	if Local.Trade.Request and BagHelper.Healthstone_IsAvailable and not Local.Trade.Complete then
-		PickupContainerItem(BagHelper.Healthstone_BagId, BagHelper.Healthstone_SlotId)
+		NecrosisCompat.PickupContainerItem(BagHelper.Healthstone_BagId, BagHelper.Healthstone_SlotId)
 		ClickTradeButton(1)
 		Local.Trade.Complete = true
 	elseif UnitExists("target") and UnitIsPlayer("target")
 		and not (UnitCanAttack("player", "target") or UnitName("target") == UnitName("player")) then
-			PickupContainerItem(BagHelper.Healthstone_BagId, BagHelper.Healthstone_SlotId)
+			NecrosisCompat.PickupContainerItem(BagHelper.Healthstone_BagId, BagHelper.Healthstone_SlotId)
 			if CursorHasItem() then
 				DropItemOnUnit("target")
 				Local.Trade.Complete = true

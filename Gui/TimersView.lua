@@ -19,23 +19,8 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 --]]
 
-
 ------------------------------------------------------------------------------------------------------
--- Necrosis LdC
--- Par Lomig (Kael'Thas EU/FR) & Tarcalion (Nagrand US/Oceanic) 
--- Contributions deLiadora et Nyx (Kael'Thas et Elune EU/FR)
---
--- Skins et voix Françaises : Eliah, Ner'zhul
---
--- Version Allemande par Geschan
--- Version Espagnole par DosS (Zul’jin)
--- Version Russe par Komsomolka
---
--- $LastChangedDate: 2008-10-18 19:51:42 +1100 (Sat, 18 Oct 2008) $
-------------------------------------------------------------------------------------------------------
-
-------------------------------------------------------------------------------------------------------
--- CREATION DE LA FRAME DES OPTIONS
+-- CREATION OF THE OPTIONS FRAME
 ------------------------------------------------------------------------------------------------------
 
 Necrosis.Gui.TimersView = {
@@ -239,12 +224,13 @@ function _tv:Show()
 			-200, -230,
 			function(self)
 				local spellId = 20765
-				Necrosis.Timers:InsertSpellTimer(
-					-- "12345",
-					-- "Testman",
-					Necrosis.CurrentEnv.PlayerGuid,
-					Necrosis.CurrentEnv.PlayerName,
-					UnitGUID("target"), UnitName("target"), 0, 0,
+			-- Use player as target if no target exists
+			local targetGuid = UnitGUID("target") or Necrosis.CurrentEnv.PlayerGuid
+			local targetName = UnitName("target") or Necrosis.CurrentEnv.PlayerName
+			Necrosis.Timers:InsertSpellTimer(
+				Necrosis.CurrentEnv.PlayerGuid,
+				Necrosis.CurrentEnv.PlayerName,
+				targetGuid, targetName, 0, 0,
 					spellId,
 					GetSpellInfo(spellId),
 					Necrosis.Spell.AuraDuration[spellId],

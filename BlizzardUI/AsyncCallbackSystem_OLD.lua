@@ -1,20 +1,22 @@
+-- From Blizzard UI code and modified:
+-- https://github.com/tomrus88/BlizzardInterfaceCode/blob/master/Interface/FrameXML/ObjectAPI/AsyncCallbackSystem.lua
+
 --[[
 	Queries some data retrieval API (specifically where the data may not be currently available) and when it becomes available
 	calls a user-supplied function.  The callback can be canceled if necessary (e.g. the frame that would use the data becomes
 	hidden before the data arrives).
-
 	The API is managed so that arbitrary query functions cannot be executed.
 --]]
 
 AsyncCallbackAPIType = {
-	ASYNC_QUEST = 1,
+	-- ASYNC_QUEST = 1,
 	ASYNC_ITEM = 2,
 	ASYNC_SPELL = 3,
 }
 
 local permittedAPI =
 {
-	[AsyncCallbackAPIType.ASYNC_QUEST] = { event = "QUEST_DATA_LOAD_RESULT", accessor =  C_QuestLog.RequestLoadQuestByID },
+	-- [AsyncCallbackAPIType.ASYNC_QUEST] = { event = "QUEST_DATA_LOAD_RESULT", accessor =  C_QuestLog.RequestLoadQuestByID },
 	[AsyncCallbackAPIType.ASYNC_ITEM] = { event = "ITEM_DATA_LOAD_RESULT", accessor =  C_Item.RequestLoadItemDataByID },
 	[AsyncCallbackAPIType.ASYNC_SPELL] = { event = "SPELL_DATA_LOAD_RESULT", accessor =  C_Spell.RequestLoadSpellData },
 };
@@ -109,4 +111,4 @@ end
 
 ItemEventListener = CreateListener(AsyncCallbackAPIType.ASYNC_ITEM);
 SpellEventListener = CreateListener(AsyncCallbackAPIType.ASYNC_SPELL);
-QuestEventListener = CreateListener(AsyncCallbackAPIType.ASYNC_QUEST);
+-- QuestEventListener = CreateListener(AsyncCallbackAPIType.ASYNC_QUEST);

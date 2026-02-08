@@ -163,7 +163,7 @@ local function MakeTimerGroupGui(parentFrame)
 
 	local title = mf:CreateFontString(nil, "OVERLAY", "NecrosisTimerFont")
 	title:SetSize(BAR_WIDTH, BAR_HEIGHT)
-	title:SetJustifyH("MIDDLE")
+	title:SetJustifyH("CENTER")
 	title:SetJustifyV("MIDDLE")
 	title:ClearAllPoints()
 	title:SetPoint("CENTER", mf, "CENTER")
