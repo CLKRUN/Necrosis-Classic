@@ -15,6 +15,7 @@
 ## X-Category: Warlock
 ## LoadOnDemand: 0
 ## SavedVariablesPerCharacter: NecrosisConfig
+## IconTexture: Interface\Addons\Necrosis-Classic\UI\Icon
 
 Necrosis.xml
 
