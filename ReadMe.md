@@ -1,4 +1,5 @@
 # Necrosis-Classic
+<img src="docs/images/Necrosis-Classic-TBC-Anniversary.png" width="320" alt="Logo">
 
 Warlock helper addon for **WoW Classic: Burning Crusade Classic Anniversary**.
 
@@ -58,3 +59,62 @@ https://www.curseforge.com/wow/addons/necrosis-classic-tbc-anniversary
 3. Ensure the folder structure looks like:
    - `.../Interface/AddOns/Necrosis-Classic/<addon files + .toc>`
 4. Restart the game (or `/reload`) and enable the addon.
+
+---
+
+## Screenshots / Previews
+<table>
+  <tr>
+    <td>
+      <a href="docs/images/necrosis_framed_v2_2026-02-08_03_02_38-World_of_Warcraft.png">
+        <img src="docs/images/necrosis_framed_v2_2026-02-08_03_02_38-World_of_Warcraft.png" width="260" alt="Sphere UI">
+      </a>
+    </td>
+    <td>
+      <a href="docs/images/necrosis_framed_v2_2026-02-08_03_02_56-World_of_Warcraft.png">
+        <img src="docs/images/necrosis_framed_v2_2026-02-08_03_02_56-World_of_Warcraft.png" width="260" alt="Sphere UI Tooltip">
+      </a>
+    </td>
+    <td>
+      <a href="docs/images/necrosis_framed_v2_2026-02-08_03_03_21-World_of_Warcraft.png">
+        <img src="docs/images/necrosis_framed_v2_2026-02-08_03_03_21-World_of_Warcraft.png" width="260" alt="Sphere UI Spell Menu">
+      </a>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <a href="docs/images/necrosis_framed_v2_2026-02-08_03_03_30-World_of_Warcraft.png">
+        <img src="docs/images/necrosis_framed_v2_2026-02-08_03_03_30-World_of_Warcraft.png" width="260" alt="Sphere UI Demon Menu">
+      </a>
+    </td>
+    <td>
+      <a href="docs/images/necrosis_framed_v2_2026-02-08_03_03_40-World_of_Warcraft.png">
+        <img src="docs/images/necrosis_framed_v2_2026-02-08_03_03_40-World_of_Warcraft.png" width="260" alt="Sphere UI Curse Menu">
+      </a>
+    </td>
+    <td>
+      <a href="docs/images/necrosis_framed_v2_2026-02-08_03_04_04-World_of_Warcraft.png">
+        <img src="docs/images/necrosis_framed_v2_2026-02-08_03_04_04-World_of_Warcraft.png" width="260" alt="Sphere UI Options Menu">
+      </a>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <a href="docs/images/necrosis_framed_v2_2026-02-08_03_04_16-World_of_Warcraft.png">
+        <img src="docs/images/necrosis_framed_v2_2026-02-08_03_04_16-World_of_Warcraft.png" width="260" alt="Sphere UI Options Menu 2">
+      </a>
+    </td>
+    <td>
+      <a href="docs/images/necrosis_framed_v2_2026-02-08_03_04_27-World_of_Warcraft.png">
+        <img src="docs/images/necrosis_framed_v2_2026-02-08_03_04_27-World_of_Warcraft.png" width="260" alt="Sphere UI Options Menu 3">
+      </a>
+    </td>
+    <td></td>
+  </tr>
+</table>
+
+
+
+
