@@ -20,23 +20,6 @@
 --]]
 
 ------------------------------------------------------------------------------------------------------
--- Necrosis LdC
--- Par Lomig (Kael'Thas EU/FR) & Tarcalion (Nagrand US/Oceanic)
--- Contributions deLiadora et Nyx (Kael'Thas et Elune EU/FR)
---
--- Skins et voix Françaises : Eliah, Ner'zhul
---
--- Version Allemande par Geschan
--- Version Espagnole par DosS (Zul’jin)
--- Version Russe par Komsomolka
---
--- Version $LastChangedDate: 2008-10-19 14:52:05 +1100 (Sun, 19 Oct 2008) $
-------------------------------------------------------------------------------------------------------
-
--- One defines G as being the table containing all the existing frames.
--- local _G = getfenv(0)
-
-------------------------------------------------------------------------------------------------------
 -- Message handler (CONSOLE, CHAT, MESSAGE SYSTEM)
 ------------------------------------------------------------------------------------------------------
 

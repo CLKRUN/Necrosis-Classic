@@ -9,7 +9,8 @@ if not LibStub then
     return
 end
 
-L = LibStub("AceLocale-3.0"):NewLocale(NECROSIS_ID, "zhCN")
+local L = LibStub("AceLocale-3.0"):NewLocale(NECROSIS_ID, "zhCN")
+if not L then return end
 
 L["NECROSIS"] = "Necrosis";
 L["NECROSIS_ONLY"] = "Necrosis";

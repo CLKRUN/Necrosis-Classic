@@ -109,4 +109,5 @@ end
 
 ItemEventListener = CreateListener(AsyncCallbackAPIType.ASYNC_ITEM);
 SpellEventListener = CreateListener(AsyncCallbackAPIType.ASYNC_SPELL);
-QuestEventListener = CreateListener(AsyncCallbackAPIType.ASYNC_QUEST);
+-- QuestEventListener disabled for Classic WoW - QUEST_DATA_LOAD_RESULT event doesn't exist in Classic
+-- QuestEventListener = CreateListener(AsyncCallbackAPIType.ASYNC_QUEST);
